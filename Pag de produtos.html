@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coimbra Nutri - Bovinos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos base (Desktop) */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        header {
+            background: url('https://honeydew-bear-937868.hostingersite.com/images/new_banner_bovinos.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            font-family: 'Georgia', serif;
+        }
+        
+        .montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            font-size: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: #ffcc00;
+        }
+        
+        header p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .container {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        
+        .filter {
+            background-color: #f8f8f8;
+            padding: 20px;
+            width: 260px;
+            min-width: 260px;
+            border-radius: 10px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+        }
+        
+        .products-section {
+            flex: 1;
+        }
+        
+        .products-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .products-header img {
+            width: 350px;
+            border-radius: 10px;
+        }
+        
+        /* Estilo padrão para product-list (com filtro) */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Estilo para a segunda seção (sem filtro) */
+.products-section.full-width .product-list {
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas fixas */
+    max-width: 100%; /* Ocupa toda a largura disponível */
+}
+        
+        .product {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: left;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .product img {
+            width: 100px;
+            min-width: 100px;
+            border-radius: 10px;
+        }
+
+        /* Media Queries para Responsividade */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            header {
+                padding: 60px 15px;
+            }
+            
+            header h1 {
+                font-size: 40px;
+            }
+            
+            header p {
+                font-size: 18px;
+                padding: 12px;
+            }
+            
+            .products-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .products-header img {
+                width: 100%;
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .filter {
+                width: 100%;
+                min-width: auto;
+                height: auto;
+            }
+            
+            .product-list {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 32px;
+            }
+            
+            header p {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 40px 10px;
+            }
+            
+            header h1 {
+                font-size: 28px;
+            }
+            
+            header p {
+                font-size: 14px;
+                padding: 10px;
+            }
+            
+            .product {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .product img {
+                width: 150px;
+                min-width: auto;
+            }
+        }
+        @media (max-width: 768px) {
+            .products-section.full-width .product-list {
+                grid-template-columns: 1fr; /* 1 coluna em telas pequenas */
+            }
+        }
+        /* Estilos comuns permanecem iguais abaixo */
+        .filter h3 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2e582e;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #2e582e;
+            padding-bottom: 5px;
+        }
+        
+        .filter label {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: #2e582e;
+            margin-bottom: 10px;
+        }
+        
+        .filter input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+        }
+        
+        .product h3 {
+            color: #228B22;
+            margin: 0;
+        }
+        
+        .product p {
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .button {
+            display: inline-block;
+            background: #FFC107;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+        <header class="header-background">
+            <h1><p class="montserrat" style="font-size: 60px;">Bovinos</p></h1>
+            <p class="montserrat" style="font-size: 30px;"> A COIMBRA NUTRI conta com uma linha completa para bovinos, incluindo suplementos minerais, núcleos proteicos e rações balanceadas para leite e corte.</p>
+        </header>
+        
+        <div class="container">
+            <aside class="filter">
+                <h3>Filtrar por:</h3>
+                <label><input type="checkbox"> Bovinos</label>
+                <label><input type="checkbox"> Suínos</label>
+                <label><input type="checkbox"> Aves </label>
+                <label><input type="checkbox"> Ovinos </label>
+            </aside>
+            
+            <section class="products-section">
+                <div class="products-header">
+                    <img src="https://honeydew-bear-937868.hostingersite.com/images/vaca_22.jpg" alt="Linha Milk">
+                    <p style="font-size: 20px;"> Perfeita para vacas na produção leiteira, a linha milk é completa para atender seus animais.</p>
+                </div>
+                
+                <div class="product-list">
+                    <div class="product">
+                        <img src="https://honeydew-bear-937868.hostingersite.com/images/milk_65.jpg" alt="Ração Milk 1">
+                        <div>
+                            <h3>Milk top 100</h3>
+                            <p>Suplemento mineral aditivado com salinomicina e vitaminas A.D.E, de pronto uso. Indicado para bovinos de leite em períodos das águas e seca, em pastagens cultivadas em solos de média a alta fertilidade.</p>
+                            <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/produto-1" class="button" target="_top">Ver mais</a>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <img src="https://honeydew-bear-937868.hostingersite.com/images/milk_65.jpg" alt="Ração Milk 2">
+                        <div>
+                            <h3>Fós 65 milk</h3>
+                            <p> Suplemento mineral aditivado com salinomicina e vitaminas A.D.E, de pronto uso. Indicado para bovinos de leite em períodos das águas e seca, em pastagens cultivadas em solos de média a alta fertilidade.</p>
+                            <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/produto-2" class="button" target="_top">Ver mais</a>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <img src="https://honeydew-bear-937868.hostingersite.com/images/milk_90.jpg" alt="Ração Milk 3">
+                        <div>
+                            <h3>Fós 90 milk</h3>
+                            <p>Suplemento mineral aditivado com salinomicina e vitaminas A.D.E, de pronto uso. Indicado para bovinos de leite em períodos das águas e seca, em pastagens cultivadas em solos de média a alta fertilidade.</p>
+                            <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/produto-3" class="button" target="'_top">Ver mais</a>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <img src="https://honeydew-bear-937868.hostingersite.com/images/milk_90.jpg" alt="Ração Milk 4">
+                        <div>
+                            <h3>Núcleo leite</h3>
+                            <p>Suplemento mineral aditivado com salinomicina e vitaminas A.D.E, de pronto uso. Indicado para bovinos de leite em períodos das águas e seca, em pastagens cultivadas em solos de média a alta fertilidade.</p>
+                            <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/produto-4" class="button" target="_top">Ver mais</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+      </div>      
+      <section class="products-section full-width">
+        <div class="products-header">
+            <img src="https://honeydew-bear-937868.hostingersite.com/images/linha_corte.jpg" alt="Linha Corte">
+            <p style="font-size: 20px;"> Perfeita para vacas na produção de gado de corte, a linha corte é completa para atender seus animais.</p>
+        </div>
+        
+        <div class="product-list">
+            <div class="product">
+                <img src="https://honeydew-bear-937868.hostingersite.com/images/nucleo_corte.jpg" alt="Núcleo Corte">
+                <div>
+                    <h3>Núcleo Corte</h3>
+                    <p>Núcleo mineral + NNP, aditivado com salinomicina e vitaminas ADE. Indicado para o preparo de rações e suplementos para bovinos de corte em períodos das águas e seca, em pastagens cultivadas em solos de média a alta fertilidade.</p>
+                    <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/nucleo-corte" class="button" target="_top">Ver mais</a>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://honeydew-bear-937868.hostingersite.com/images/45_p.jpg" alt="45 Pronto">
+                <div>
+                    <h3>45 Pronto</h3>
+                    <p>Suplemento mineral aditivado com salinomicina e vitaminas ADE, de pronto uso. Indicado para bovinos de corte em períodos das águas e seca, sob pastagens cultivadas em solos de média a alta fertilidade.</p>
+                    <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/fos-45" class="button" target="_top">Ver mais</a>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://honeydew-bear-937868.hostingersite.com/images/50_p.jpg" alt="50 Pronto">
+                <div>
+                    <h3>50 Pronto</h3>
+                    <p> Suplemento mineral aditivado com salinomicina e vitaminas ADE, de pronto uso. Indicado para bovinos de leite e corte em períodos das águas e seca, sob pastagens cultivadas em solos de média a alta fertilidade.</p>
+                    <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/fos-50-p" class="button" target="_top">Ver mais</a>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://honeydew-bear-937868.hostingersite.com/images/65_re.jpg" alt="65 Recria">
+                <div>
+                    <h3>65 Recria</h3>
+                    <p>Suplemento mineral aditivado com salinomicina e vitaminas ADE, de pronto uso. Indicado para bovinos de corte em períodos das águas e seca, sob pastagens cultivadas em solos de média a alta fertilidade.</p>
+                    <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/fos-65" class="button" target="_top">Ver mais</a>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://honeydew-bear-937868.hostingersite.com/images/fos_80.jpg" alt="Fós 80">
+                <div>
+                    <h3>Fós 80</h3>
+                    <p>Suplemento mineral aditivado com salinomicina e vitaminas ADE, de pronto uso. Indicado para bovinos de corte nas fases cria e recria em períodos das águas e seca, sob pastagens cultivadas em solos de média a alta fertilidade.</p>
+                    <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/fos-80" class="button" target="_top">Ver mais</a>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://honeydew-bear-937868.hostingersite.com/images/fos_90.jpg" alt="90 cria">
+                <div>
+                    <h3>Fós 90 cria</h3>
+                    <p>Suplemento mineral, aditivado com salinomicina, indicado para bovinos de corte em períodos das águas e seca, sob pastagens cultivadas em solos de média a alta fertilidade.</p>
+                    <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/coimbra-90-cria" class="button" target="_top">Ver mais</a>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <section class="products-section full-width">
+        <div class="products-header">
+            <img src="https://honeydew-bear-937868.hostingersite.com/images/proteinados_1.jpg" alt="Linha Corte">
+            <p style="font-size: 20px;">Perfeita para vacas na produção de gado de corte, a linha proteinados é completa para atender seus animais, tanto de gado como de leite.</p>
+        </div>
+        
+        <div class="product-list">
+            <div class="product">
+                <img src="https://honeydew-bear-937868.hostingersite.com/images/advanced_1.jpg" alt="Advanced">
+                <div>
+                    <h3>Advanced</h3>
+                    <p>Suplemento mineral proteico aditivado com salinomicina, indicado para bovinos de corte nas fases recria e engorda, sob pastagens cultivadas em solos de média a alta fertilidade.</p>
+                    <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/advanced" class="button" target="_top">Ver mais</a>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://honeydew-bear-937868.hostingersite.com/images/desmama_1.jpg" alt="Desmama">
+                <div>
+                    <h3>Beef Desmama </h3>
+                    <p> Suplemento mineral proteico aditivado com salinomicina e flavomicina, indicado para bovinos de corte nas fases recria e engorda, sob pastagens cultivadas em solos de média a alta fertilidade.</p>
+                    <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/beef-desmama" class="button" target="_top">Ver mais</a>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://honeydew-bear-937868.hostingersite.com/images/beef_150.jpg" alt="Beef 150">
+                <div>
+                    <h3>Beef 150</h3>
+                    <p>Suplemento mineral proteico aditivado com salinomicina, indicado para bovinos de corte nas fases recria e engorda, sob pastagens cultivadas em solos de média a alta fertilidade.</p>
+                    <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/beef-150" class="button" target="_top">Ver mais</a>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://honeydew-bear-937868.hostingersite.com/images/beef_nit.jpg" alt="Beef Nitrogenado">
+                <div>
+                    <h3>Beef Nitrogenado</h3>
+                    <p>Suplemento mineral + NNP, aditivado com salinomicina, indicado para bovinos de corte em períodos das águas e seca, sob pastagens cultivadas em solos de média a alta fertilidade.</p>
+                    <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/beef-nitrogenado" class="button" target="_top">Ver mais</a>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://honeydew-bear-937868.hostingersite.com/images/fértil_25.jpg" alt="Fértil 25%">
+                <div>
+                    <h3>Coimbra Fértil 25%</h3>
+                    <p>Suplemento mineral + NNP aditivado, indicado para bovinos de corte em períodos das águas e seca, sob pastagens cultivadas em solos de média a alta fertilidade.</p>
+                    <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/fertil-25percent" class="button" target="_top">Ver mais</a>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://honeydew-bear-937868.hostingersite.com/images/fertil_1.jpg" alt="Fértil plus">
+                <div>
+                    <h3>Fértil Plus</h3>
+                    <p>Suplemento mineral + NNP aditivado, indicado para bovinos de corte em períodos das águas e seca, sob pastagens cultivadas em solos de média a alta fertilidade.</p>
+                    <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/fertil-plus" class="button" target="_top">Ver mais</a>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://honeydew-bear-937868.hostingersite.com/images/beef_seca.jpg" alt="Beef Seca">
+                <div>
+                    <h3>Beef Nitrogenado Seca</h3>
+                    <p> Suplemento mineral + NNP aditivado, indicado para bovinos de corte em períodos das águas e seca, sob pastagens cultivadas em solos de média a alta fertilidade.</p>
+                    <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/beef-seca" class="button" target="_top">Ver mais</a>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://honeydew-bear-937868.hostingersite.com/images/salgado_1.jpg" alt="Beef Salgado">
+                <div>
+                    <h3>Beef Salgado</h3>
+                    <p> Suplemento mineral + NNP, indicado para bovinos de corte em períodos das águas e seca, sob pastagens cultivadas em solos de média a alta fertilidade.</p>
+                    <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/beef-salgado" class="button" target="_top">Ver mais</a>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://honeydew-bear-937868.hostingersite.com/images/creep_1.jpg" alt="Proteico Creep">
+                <div>
+                    <h3>Proteico Creep</h3>
+                    <p> Ração farelada de pronto uso, com exclusiva combinação de minerais e vitaminas A D E, para atender as necessidades nutricionais de bezerros nas fases iniciais de alimentação</p>
+                    <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/coibra-creep" class="button" target="_top">Ver mais</a>
+                </div>
+            </div>
+     </div>   
+      
+
+<header class="header-background">
+    <h1><p class="montserrat" style="font-size: 60px;">Suinos </p></h1>
+    <p class="montserrat" style="font-size: 30px;"> A COIMBRA NUTRI conta com uma linha completa para suínos, contemplando todas as fases, do nascimento ao estágio final.</p>
+</header>
+
+<section class="products-section">
+    <div class="products-header">
+        <img src="https://honeydew-bear-937868.hostingersite.com/images/suino_1.jpg" alt="Linha Milk">
+        <p style="font-size: 20px;"> Perfeita para vacas na produção leiteira, a linha milk é completa para atender seus animais.</p>
+    </div>
+    
+    <div class="product-list">
+        <div class="product">
+            <img src="https://honeydew-bear-937868.hostingersite.com/images/suino_cres.jpg" alt="Suíno Crescimento">
+            <div>
+                <h3>Suino Crescimento</h3>
+                <p><strong>COMPOSIÇÃO BÁSICA:</strong> Milho Integral Moído, Premix Vitamínico Mineral, Sorgo Integral Moído, Farelo de Soja, Farinha de Carne e Ossos e Calcário Calcítico.
+                    <br> <strong>INDICAÇÕES DO PRODUTO:</strong> Produto indicado para suínos em fase de crescimento. <br>
+                   <strong>MODO DE USAR:</strong> Fornecer à vontade para suínos dos 70 aos 115 dias de vida.</p>
+                <a href="https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/suino-crescimento" class="button" target="_top">Ver mais</a>
+            </div>
+        </div>
+        <div class="product">
+            <img src="https://honeydew-bear-937868.hostingersite.com/images/suino_final.jpg" alt="Suíno Final">
+            <div>
+                <h3>Suíno Final</h3>
+                <p><strong>Ração para suínos na fase de engorda, acabamento. </strong>
+                    Pronto para uso.
+                    <br>
+                    <strong>COMPOSIÇÃO BÁSICA</strong>
+                    Milho Integral Moído, Sorgo Integral, Farelo de Soja, Calcário Calcítico, Farinha de Carne e Ossos, Premix Mineral e Premix Vitamínico aminoácido.
+                     <br>
+                    <strong>Indicações do Produto:</strong> Produto indicado para suíno na fase de engorda, acabamento.
+                    Modo de usar: Fornecer à vontade para suínos dos 120 dias de idade até o abate.
+                    USO PROIBIDO NA ALIMENTAÇÃO DE RUMINANTES.</p>
+                <a href=" https://coimbra-nutri-yrdqnqx181uoqjbg.builder-preview.com/suino-final" class="button" target="_top">Ver mais</a>
+            </div>
+        </div>
+        
+
+<footer>
+    <p>&copy; 2025 Coimbra Nutri. Todos os direitos reservados.</p>
+</footer>
+</body>
+</html>
